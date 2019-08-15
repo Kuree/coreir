@@ -1,5 +1,5 @@
 message(STATUS ${CMAKE_CURRENT_SOURCE_DIR})
-file(GLOB SRC_FILES 
+file(GLOB SRC_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/ir/[^_]*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/passes/analysis/[^_]*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/passes/transform/[^_]*.cpp
@@ -31,15 +31,6 @@ add_custom_command(
   COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:coreir>" "${CMAKE_SOURCE_DIR}/lib/"
   COMMENT "Copying to lib/"
 )
-
-add_custom_command(
-  TARGET coreir
-  POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_BINARY_DIR}/lib/libverilogAST${CMAKE_SHARED_LIBRARY_SUFFIX}" "${CMAKE_SOURCE_DIR}/lib/"
-  COMMENT "Copying libverilogAST"
-)
-
-install(FILES "${CMAKE_SOURCE_DIR}/lib/libverilogAST${CMAKE_SHARED_LIBRARY_SUFFIX}" DESTINATION lib)
 
 add_custom_command(
   TARGET coreir
